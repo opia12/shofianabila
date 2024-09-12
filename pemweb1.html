@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 1 - Beranda</title>
+    
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Comic Neue) -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+        }
+    </style>
+</head>
+<body class="bg-pink-400">
+    <!-- Navbar -->
+    <nav class="bg-pink-600 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+           <h1 class="text-white text-3xl font-bold">SIK B</h1>
+            <ul class="flex space-x-6">
+                <li><a href="data.html" class="text-white rounded-full hover:text-pink-300">Data</a></li>
+                <li><a href="formulir.html" class="text-white rounded-full hover:text-pink-300">Form</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="bg-pink-400 h-screen flex items-center justify-center text-center text-white relative">
+        <!-- Background Image -->
+        <div class="absolute inset-0 flex justify-center items-center">
+            <div class="bg-cover bg-center rounded-lg shadow-lg opacity-50" style="background-image: url('almet.jpg'); width: 120%; height: 100%;"></div>
+        </div>
+        
+        <!-- Section with background image and text -->
+        <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-20">
+            <h1 class="text-8xl font-extrabold mb-4 hover:text-pink-600 transform hover:scale-105 transition-transform duration-300">HALLOW</h1>
+            <h2 class="text-5xl mb-5 hover:text-pink-600 transition duration-300 transform hover:scale-105 transition-transform duration-300 font-semibold">Selamat Datang</h2>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-pink-300">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-12 text-pink-700 hover:text-pink-400">RECAP !!!</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 bg-pink-200 rounded-lg shadow-md hover:bg-pink-400 transition duration-300 text-xl font-semibold mb-4">
+                    <h2 class="text-2xl mb-6 px-6 py-3 text-white font-semibold">ALMET</h2>
+                    <a href="almet.html" class="hover:bg-pink-100 text-pink-200">Foto bersama menggunakan almet merah UPI</a>
+                </div>
+                <div class="p-8 bg-pink-200 rounded-lg shadow-md hover:bg-pink-400 transition duration-300 text-xl font-semibold mb-4">
+                    <h2 class="text-2xl mb-6 px-6 py-3 text-white font-semibold">SEMESTER 1</h2>
+                    <a href="Semester1.html" class=" hover:bg-pink-100 text-pink-200">Kelas terakhir MK PAI di Semester 1</a>
+                </div>
+                <div class="p-8 bg-pink-200 rounded-lg shadow-md hover:bg-pink-400 transition duration-300 text-xl font-semibold mb-4">
+                    <h2 class="text-2xl mb-6 px-6 py-3 text-white font-semibold">BATIK DAY</h2>
+                    <a href="batik.html" class="hover:bg-pink-100
+                     text-pink-200">Hari Batik Nasional SIK B.</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-pink-600 py-6">
+        <div class="container mx-auto flex justify-between items-center">
+           <ul class="flex space-x-6">
+            
+             <li><a href="https://music.youtube.com/watch?v=Xd-L2O4taPI&si=Rlecs8PaDkqat7tO" class="text-white rounded-full hover:text-pink-300">Musik</a></li>
+
+             <li><a href="https://www.instagram.com/sik23b__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-white rounded-full hover:text-pink-300">IG</a></li>
+            </ul> 
+            <p>&copy; 2024 KELUARGA. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
