@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Node JS - Restoran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec;
+            margin: 0;
+            padding: 20px;
+            color: #880e4f;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(236, 64, 122, 0.1);
+        }
+        h1, h2 {
+            color: #c2185b;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #f48fb1;
+        }
+        th {
+            background-color: #ec407a;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #fce4ec;
+        }
+        a {
+            color: #d81b60;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        form {
+            background-color: #f8bbd0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        label {
+            width: 100px;
+            margin-right: 10px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #f48fb1;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #ec407a;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #d81b60;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        .edit-btn, .delete-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: white;
+        }
+        .edit-btn {
+            background-color: #f06292;
+        }
+        .edit-btn:hover {
+            background-color: #ec407a;
+        }
+        .delete-btn {
+            background-color: #ff80ab;
+        }
+        .delete-btn:hover {
+            background-color: #f50057;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .form-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            input[type="text"],
+            input[type="number"],
+            select {
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        function confirmAction(action, id) {
+            return confirm(`Apakah anda yakin ingin ${action} menu ini?`);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Tambah Menu Baru</h1>
+        <form action="/add" method="post" onsubmit="return confirmAction('menambahkan', '')">
+            <div class="form-group">
+                <label for="nama">Nama Menu:</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            <div class="form-group">
+                <label for="harga">Harga Menu:</label>
+                <input type="number" id="harga" name="harga" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="kategori">Kategori:</label>
+                <select id="kategori" name="kategori" required>
+                    <option value="Pembuka">Pembuka</option>
+                    <option value="Hidangan Utama">Hidangan Utama</option>
+                    <option value="Penutup">Penutup</option>
+                </select>
+            </div>
+            <button type="submit">Tambah Menu</button>
+        </form>
+
+        <h2>Daftar Menu Restoran</h2>
+        <table>
+            <thead>
+                <tr> 
+                    <th>ID</th>
+                    <th>Nama Menu</th>
+                    <th>Harga</th>
+                    <th>Kategori</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (menus && menus.length > 0) { %>
+                    <% menus.forEach(menu => { %>
+                    <tr>
+                        <td><%= menu.id %></td>
+                        <td><%= menu.nama %></td>
+                        <td><%= menu.harga %></td>
+                        <td><%= menu.kategori %></td>
+                        <td class="action-buttons">
+                            <a href="/edit/<%= menu.id %>" class="edit-btn" onclick="return confirmAction('mengedit', <%= menu.id %>)">Edit</a>
+                            <a href="/delete/<%= menu.id %>" class="delete-btn" onclick="return confirmAction('menghapus', <%= menu.id %>)">Hapus</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="5" style="text-align: center;">Tidak ada menu tersedia</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data Menu</title>
+    <style>
+        body {
+            background-color: #fce4ec;
+            font-family: Arial, sans-serif;
+            color: #880e4f;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #f48fb1;
+            box-shadow: 0 0 10px rgba(236, 64, 122, 0.1);
+            border-radius: 8px;
+        }
+        
+        h2 {
+            color: #d81b60;
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #c2185b;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #f06292;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button[type="submit"] {
+            background-color: #ec407a;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #d81b60;
+        }
+    </style>
+    <script>
+        function saveChanges() {
+            alert("Anda akan menyimpan perubahan data menu.");
+            return confirm("Apakah anda yakin ingin mengedit data menu ini?");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Data Menu</h2>
+        <form action="/update/<%= menu.id %>" method="post" onsubmit="return saveChanges()">
+            <label for="nama">Nama Menu:</label>
+            <input type="text" id="nama" name="nama" required value="<%=menu.nama %>">
+            
+            <label for="harga">Harga Menu:</label>
+            <input type="number" id="harga" name="harga" required value="<%=menu.harga %>">
+            
+            <label for="kategori">Kategori Menu:</label>
+            <select id="kategori" name="kategori" required>
+                <option value="Pembuka" <%= menu.kategori === 'Pembuka' ? 'selected' : '' %>>Pembuka</option>
+                <option value="Hidangan Utama" <%= menu.kategori === 'Hidangan Utama' ? 'selected' : '' %>>Hidangan Utama</option>
+                <option value="Penutup" <%= menu.kategori === 'Penutup' ? 'selected' : '' %>>Penutup</option>
+            </select>
+            
+            <button type="submit">Simpan</button>
+        </form>
+    </div>
+</body>
+</html>
